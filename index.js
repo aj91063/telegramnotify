@@ -86,7 +86,9 @@ let getData = () => {
         });
     });
 }
-
+app.get("/",(req,res)=>{
+    res.send("hello bro");
+});
 app.listen(port,()=>{
 console.log("port: "+port);
 });
