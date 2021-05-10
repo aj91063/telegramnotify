@@ -2,6 +2,9 @@ var teleBot = require("node-telegram-bot-api");
 var token = '1713439842:AAFu3x6KLSi3eOOzGil1DbGr1lxFFfIAf0Y';
 var bot = new teleBot(token, { polling: true });
 var request = require('request');
+const express=require('express');
+const app=express();
+const port=process.env.POORT || 3010;
 
 
 var centerName;
@@ -83,5 +86,10 @@ let getData = () => {
         });
     });
 }
+
+app.listen(port,()=>{
+console.log("port: "+port);
+});
+
 getData();
 
