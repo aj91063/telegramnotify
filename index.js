@@ -26,12 +26,12 @@ let year = dateAra[2];
 let dtt = `${day}-${month}-${year}`;
 
 let getData = () => {
-    bot.onText(/\/d (.+)/, function (msg, match) {
+    bot.onText(/\/d (.+) (.+)/, function (msg, match) {
         var chatId = msg.chat.id;
-        //var date=match[1];
-        var city = match[1];
+        var date=match[1];
+        var city = match[2];
         console.log("----" + city);
-        request(`https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict?district_id=${city}&date=${dtt}`, function (error, response, body) {
+        request(`https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict?district_id=${city}&date=${date}`, function (error, response, body) {
             if (!error && response.statusCode == 200) {
                 var res = JSON.parse(body);
                 CityName = res.centers[0]["district_name"];
